@@ -59,9 +59,9 @@ export interface AddonServiceApi {
 	connect(alias: string, options?: ServiceCallOptions): Promise<ServiceConnection>;
 	provide(name: string, implementation: ServiceImplementation): ServicePublisher;
 }
-export interface ServiceWorkerContext {
+export interface ServiceStartContext {
 	services: AddonServiceApi;
-	/** The worker owns device-scoped values; visual layer values remain local. */
+	/** The service entry owns device-scoped values; visual layer values remain local. */
 	settings: {
 		get(): Record<string, JsonValue>;
 		subscribe(listener: (values: Record<string, JsonValue>) => void): () => void;
@@ -134,7 +134,7 @@ export interface CanvasRuntimeApi {
 	readonly instance: RuntimeInstance;
 }
 export interface CanvasLayerApi {
-	/** Stable container owned by this layer instance inside its execution domain. */
+	/** Stable container owned by this layer instance in the common Canvas document. */
 	readonly root: HTMLElement;
 	readonly layerId: string;
 	readonly settings: LayerSettingsApi;

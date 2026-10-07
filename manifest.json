@@ -2,7 +2,7 @@
   "runtime": "canvas-native-v1",
   "name": "WhatsApp",
   "description": "Your recent WhatsApp conversations on your desktop. Pair your phone by QR code, read and send text messages with a local Baileys companion, without an extra browser.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "entry": "dist/assets/addon.js",
   "thumbnail": "assets/thumbnail.jpg",
   "deviceSettingsVersion": "1",
