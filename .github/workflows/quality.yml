@@ -1,0 +1,39 @@
+name: WhatsApp widget checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2025
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e
+        with:
+          node-version-file: .nvmrc
+      - name: Install the pinned frontend toolchain
+        run: npm install --global pnpm@10.33.0
+      - name: Build the Canvas entry
+        run: |
+          pnpm install --frozen-lockfile --ignore-scripts
+          if ($LASTEXITCODE -ne 0) { throw 'Frontend dependency install failed' }
+          pnpm build
+          if ($LASTEXITCODE -ne 0) { throw 'Frontend build failed' }
+      - name: Build and verify the native companion
+        run: |
+          node native/build.mjs
+          if ($LASTEXITCODE -ne 0) { throw 'Native build failed' }
+          npm --prefix native run typecheck
+          if ($LASTEXITCODE -ne 0) { throw 'Native typecheck failed' }
+          npm --prefix native test
+          if ($LASTEXITCODE -ne 0) { throw 'Native checks failed' }
+          node native/test/sea-smoke.mjs
+          if ($LASTEXITCODE -ne 0) { throw 'Windows runtime smoke failed' }

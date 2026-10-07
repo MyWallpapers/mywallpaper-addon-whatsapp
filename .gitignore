@@ -1,0 +1,8 @@
+node_modules/
+dist/
+native/node_modules/
+native/out/
+native/.build/
+.mywallpaper/
+.artifacts/
+*.log

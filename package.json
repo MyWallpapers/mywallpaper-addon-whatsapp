@@ -1,0 +1,22 @@
+{
+  "name": "mywallpaper-addon-whatsapp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite --host 127.0.0.1 --port 5190 --strictPort",
+    "dev": "mywallpaper dev",
+    "check": "mywallpaper check"
+  },
+  "dependencies": {
+    "qrcode": "1.5.4"
+  },
+  "devDependencies": {
+    "@types/qrcode": "1.5.6",
+    "typescript": "5.8.3",
+    "vite": "7.3.0"
+  }
+}

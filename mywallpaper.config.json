@@ -1,0 +1,16 @@
+{
+  "web": {
+    "command": "pnpm",
+    "args": ["build"],
+    "inputs": ["src", "shared", "assets", "generated", "scripts", "package.json", "pnpm-lock.yaml", "tsconfig.json", "vite.config.ts"],
+    "outputs": ["dist"]
+  },
+  "native": {
+    "builds": [{
+      "id": "windows-x86_64",
+      "command": "node",
+      "args": ["native/build.mjs"],
+      "outputs": ["native/out/windows-x86_64/bin/whatsapp.exe"]
+    }]
+  }
+}

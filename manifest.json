@@ -1,0 +1,29 @@
+{
+  "runtime": "canvas-native-v1",
+  "name": "WhatsApp",
+  "description": "Your recent WhatsApp conversations on your desktop. Pair your phone by QR code, read and send text messages with a local Baileys companion, without an extra browser.",
+  "version": "0.1.0",
+  "entry": "dist/assets/addon.js",
+  "thumbnail": "assets/thumbnail.jpg",
+  "deviceSettingsVersion": "1",
+  "ui": { "pointerEvents": "auto" },
+  "native": {
+    "companion": {
+      "runtime": "process-v2",
+      "entries": { "windows-x86_64": "native/out/windows-x86_64/bin/whatsapp.exe" }
+    }
+  },
+  "settings": [
+    { "id": "appearance", "type": "section", "label": "Appearance" },
+    { "id": "opacity", "type": "range", "label": "Glass opacity", "scope": "layer", "min": 0.5, "max": 1, "step": 0.05, "default": 0.85 },
+    { "id": "blur", "type": "range", "label": "Glass blur", "scope": "layer", "min": 0, "max": 24, "step": 1, "default": 16 },
+    { "id": "language", "type": "select", "label": "Language", "scope": "layer", "default": "auto", "options": [
+      { "label": "Automatic", "value": "auto" },
+      { "label": "Français", "value": "fr" },
+      { "label": "English", "value": "en" }
+    ] },
+    { "id": "privacy", "type": "section", "label": "Privacy" },
+    { "id": "hidePreviews", "type": "boolean", "label": "Hide message previews", "scope": "layer", "default": false },
+    { "id": "markRead", "type": "boolean", "label": "Send read receipts when opening a conversation", "scope": "device", "default": false }
+  ]
+}

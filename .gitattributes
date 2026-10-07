@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.woff2 binary
+*.jpg binary
+# Preserve upstream licence text verbatim, including its original whitespace.
+assets/*LICENSE.txt -whitespace
+assets/OFL.txt -whitespace
+assets/THIRD-PARTY-NOTICES.txt -whitespace
+native/NODE-LICENSE.txt -whitespace
+native/licenses/*.txt -whitespace
